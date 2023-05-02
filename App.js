@@ -1,97 +1,63 @@
+import React, { useState } from 'react';
+import {
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+  StyleSheet,
+} from 'react-native';
 
+const QRScreen = ({ navigation }) => {
+  const [qrCode, setQrCode] = useState('');
+  const [picture, setPicture] = useState('');
 
-//////////////////////////////////////////// Develop a React Native application that has the touch & Feel of a basic calculator (PS: Basic calculator has : 0 - 9, +, -, *, /, =, c, and a display)
+  const handleQRCodeScan = () => {
+    navigation.navigate('Camera', { type: 'QR' });
+  };
 
-import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+  const handlePictureSnap = () => {
+    navigation.navigate('Camera', { type: 'picture' });
+  };
 
-export default function CalculatorScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.display}>0</Text>
-      <View style={styles.row}>
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>7</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>8</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>9</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>/</Text>
-        </TouchableOpacity>
-      </View>
-      <View style={styles.row}>
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>4</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>5</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>6</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>*</Text>
-        </TouchableOpacity>
-      </View>
-      <View style={styles.row}>
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>1</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>2</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>3</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>-</Text>
-        </TouchableOpacity>
-      </View>
-      <View style={styles.row}>
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>c</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>0</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>=</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>+</Text>
-        </TouchableOpacity>
-      </View>
+      <Image
+        source={require('./logo.png')}
+        style={styles.logo}
+      />
+      <TouchableOpacity onPress={handleQRCodeScan} style={styles.button}>
+        <Text style={styles.buttonText}>Scan QR Code</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={handlePictureSnap} style={styles.button}>
+        <Text style={styles.buttonText}>Snap Picture or Video</Text>
+      </TouchableOpacity>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    justifyContent: 'center',
     alignItems: 'center',
+    justifyContent: 'center',
   },
-  display: {
-    fontSize: 48,
-    fontWeight: 'bold',
-    marginBottom: 32,
-  },
-  row: {
-    flexDirection: 'row',
+  logo: {
+    width: 200,
+    height: 200,
+    marginBottom: 50,
   },
   button: {
-    backgroundColor: '#ddd',
-    borderRadius: 8,
-    padding: 16,
-    margin: 8,
+    backgroundColor: '#6495ED',
+    padding: 15,
+    borderRadius: 10,
+    margin: 10,
   },
   buttonText: {
-    fontSize: 32,
+    color: '#FFFFFF',
+    fontSize: 18,
     fontWeight: 'bold',
+    textAlign: 'center',
   },
 });
+
+export default QRScreen;
