@@ -4,9 +4,15 @@
     "plugins": [
       [
         "expo-camera",
+       
+
         {
           "cameraPermission": "Allow $(scannerapp) to access your camera."
         }
+      ],
+      [
+        "expo-barcode-scanner",
+        {"cameraPermission" :"Allow $(scannerapp) to access your camera."}
       ]
     ],
     "slug": "basicapp",
