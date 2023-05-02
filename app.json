@@ -1,6 +1,14 @@
 {
   "expo": {
     "name": "basicapp",
+    "plugins": [
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Allow $(scannerapp) to access your camera."
+        }
+      ]
+    ],
     "slug": "basicapp",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -14,6 +22,7 @@
     "assetBundlePatterns": [
       "**/*"
     ],
+    
     "ios": {
       "supportsTablet": true
     },
