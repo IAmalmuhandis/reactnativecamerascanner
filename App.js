@@ -58,7 +58,8 @@ const App = ({ navigation }) => {
   const handleTakePicture = async () => {
     if (cameraRef.current) {
       const photo = await cameraRef.current.takePictureAsync();
-      navigation.navigate('Preview', { photo });
+      alert("picture was taken");
+      // navigation.navigate('Preview', { photo });
     }
   };
 
@@ -69,7 +70,8 @@ const App = ({ navigation }) => {
         setIsRecording(false);
       } else {
         const video = await cameraRef.current.recordAsync();
-        navigation.navigate('Preview', { video });
+        // navigation.navigate('Preview', { video });
+        alert("video is recorded");
         setIsRecording(false);
       }
     }
