@@ -22,7 +22,7 @@ const QRScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Image
-        source={require('./logo.png')}
+        source={require('./logo.jpeg')}
         style={styles.logo}
       />
       <TouchableOpacity onPress={handleQRCodeScan} style={styles.button}>
